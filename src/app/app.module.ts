@@ -1,20 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+ import {   HttpModule } from '@angular/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+// services
+import { AuthenticationService } from './shared/services/authentication.service';
+import {  UserService } from './shared/services/user.service';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'ng-sidebar';
-// import { AgmCoreModule } from '@agm/core';
+
 
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
+
+
+import {
+  AuthGuard,
+  JwtInterceptor,
+  ErrorInterceptor } from './shared';
 
 import {
   MenuComponent,
@@ -45,6 +60,7 @@ export function createTranslateLoader(http: HttpClient) {
     AccordionDirective
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes),
@@ -54,15 +70,20 @@ export function createTranslateLoader(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [HttpClient]
+        deps: [HttpClient],
       }
     }),
     LoadingBarRouterModule,
     NgbModule.forRoot(),
     SidebarModule.forRoot()
-   //  AgmCoreModule.forRoot({apiKey: 'YOURAPIKEY'})
+
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthenticationService,
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

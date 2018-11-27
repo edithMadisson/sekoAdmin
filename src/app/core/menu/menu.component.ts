@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuService } from '../../services/menu.service';
+import { MenuService } from '../../shared/services/menu.service';
 
 import { TranslateService } from '@ngx-translate/core';
 /* tslint:disable:max-line-length */
