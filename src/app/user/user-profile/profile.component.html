@@ -1,0 +1,68 @@
+<p class="ff-headers text-uppercase text-center mb-3 mt-3 fw-600">Profile Detail</p>
+
+<div class="uk-container-center">
+
+
+    <div class="uk-container-center">
+        <div class="row justify-content-center">
+
+
+            <div class="justify-content-lg-center">
+                <div class="card" style="width: 15rem;">
+                    <img class="card-img-top" src="assets/images/default-avatar.png" alt="Card image cap">
+
+
+
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <p class="text-center">
+                                {{currentUser.user.name}}
+                            </p>
+
+                            <p class="text-center"> Member since </p>
+                            <p class="text-center "> <i class="  flaticon-fullscreen "> {{currentUser.user.created_at}}</i> </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <p class="text-center">
+                        About me </p>
+                    <br>
+
+                    <p class="text-center">
+                        <span class="input-group-addon"><i class="fa fa-qrcode"></i>  <small> First name: {{currentUser.user.name}} </small> </span>
+                        <br>
+
+                        <span class="input-group-addon"><i class="fa fa-qrcode"></i>   <small> Last name:  {{currentUser.user.name}} </small> </span>
+                        <br>
+
+                        <span class="input-group-addon"><i class="fa fa-qrcode"></i>  <small>  Phone : 777-77-77  </small> </span>
+                        <br>
+
+                        <span class="input-group-addon"><i class="fa fa-qrcode"></i> <small> Email: {{currentUser.user.email}} </small> </span>
+
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+<!--   examples -->

@@ -7,15 +7,6 @@
                 <p class="ff-headers text-uppercase">Create an account</p>
             </div>
 
-            <div class="alert alert-success" role="alert" *ngIf="usuario_guardado">
-                <h4 class="alert-heading">Well done!</h4>
-                <p>Has been successfully registered</p>
-                <hr>
-                <p class="mb-0">"Thanks for signing up! Please check your email to complete your registration." {{message}} </p>
-            </div>
-
-
-
             <fieldset class="form-group">
                 <label for="email" class="form-control-label"> 
           Choose a Email
@@ -49,7 +40,20 @@
             </div>
             <div class="block mb-3"></div>
             <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>
-            <a class="btn btn-outline-primary btn-link" [routerLink]="['/authentication/signin']">Login!</a>
+            <a class="btn btn-outline-primary btn-link" [routerLink]="['/signin']">Login!</a>
+
+
+            <div class="alert alert-danger" role="alert" *ngIf="message" ng-show="errorMsg">
+
+                <h3> {{message}} </h3>
+
+
+                <span class="glyphicon glyphicon-hand-right"> <h6> Verify your Password and Email</h6></span>
+            </div>
+
+
+
+
         </form>
     </div>
 </div>

@@ -14,10 +14,12 @@ const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
   providers: [UserService]
 })
 export class SignupComponent implements OnInit {
+
   public user: User;
   message: string;
   public usuario_guardado;
   public form: FormGroup;
+
   constructor(private fb: FormBuilder, private router: Router,   private _userService: UserService,  private _route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class SignupComponent implements OnInit {
     const user = this.form.value.user;
 
     this._userService.register(user).subscribe( (response) => {
+
         this.usuario_guardado = response;
 
       },

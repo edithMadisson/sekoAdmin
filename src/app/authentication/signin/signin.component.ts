@@ -50,7 +50,7 @@ export class SigninComponent implements OnInit {
        .pipe( first())
         .subscribe((data) => {
             // alert('Te has logueado correctamente');
-            this.router.navigate ( [ '/' ] );
+            this.router.navigate ( [ 'dashboard' ] );
              // console.log(data);
             },
             error => {

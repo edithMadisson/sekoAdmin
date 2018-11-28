@@ -11,7 +11,7 @@ import { User } from '../../shared/models/user';
 })
 export class HeaderComponent {
 
-  currentUser: User;
+  currentUser: any;
 
   @Input() heading: string;
   @Output() toggleSidebar = new EventEmitter<void>();
@@ -32,7 +32,7 @@ export class HeaderComponent {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-    this._router.navigate(['/authentication/signin']);
+    this._router.navigate(['/signin']);
 }
 
 }
